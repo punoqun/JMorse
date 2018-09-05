@@ -117,7 +117,6 @@ end
 
 while true
     println("Please enter the phrase you want to convert to morse code: ")
-    sleep(10)
     str = chomp(readline())
     to_morse(str)
 end
