@@ -14,7 +14,8 @@ id = signal_connect(translate, "clicked") do widget
      to_morse(str)
 end
 result = GtkLabel("")
-info = GtkLabel("Type your message to the top box, either normal letters, numbers and punctuation or Morse code using '.' for a dot, '-' for a dash, separating letters by spaces and words by '/'.")
+info = GtkLabel("Type your message to the top box, either normal letters, numbers and punctuation or Morse code using '.' for a dot, '-'
+for a dash, separating letters by spaces and words by '/'. \n Also the unknown characters will be shown as #.")
 
 GAccessor.selectable(result,true)
 GAccessor.line_wrap(result,true)
@@ -134,6 +135,7 @@ function to_morse(input)
             elseif i == '/'
                 morse = morse * "-..-."
             else
+                morse = morse * "#"
             end
             morse = morse * " "
         end
