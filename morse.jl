@@ -1,3 +1,27 @@
+using Gtk
+
+
+
+win = GtkWindow("JMorse",600,400)
+vbox = GtkBox(:v)  # :h makes a horizontal layout, :v a vertical layout
+push!(win, vbox)
+ent = GtkEntry()
+set_gtk_property!(ent,:text,"Please enter the phrase you want to convert to morse code: ")
+str = get_gtk_property(ent,:text,String)
+translate = GtkButton("Translate!")
+id = signal_connect(translate, "clicked") do widget
+    str = get_gtk_property(ent,:text,String)
+     to_morse(str)
+end
+result = GtkLabel("")
+GAccessor.selectable(result,true)
+GAccessor.line_wrap(result,true)
+push!(vbox, ent)
+push!(vbox, translate)
+push!(vbox, result)
+
+showall(win)
+
 function to_morse(input)
     words = split(input, ' ')
     morse = ""
@@ -112,12 +136,9 @@ function to_morse(input)
         end
         morse = morse * "/ "
     end
-    println(morse)
+    morse *= ".-.-"  #this is the new line (end)
+    GAccessor.text(result,morse)
 end
-
-while true
-    println("Please enter the phrase you want to convert to morse code: ")
-    sleep(10)
-    str = chomp(readline())
-    to_morse(str)
-end
+#while true
+#    to_morse(str)
+#end
