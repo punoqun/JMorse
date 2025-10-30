@@ -8,7 +8,6 @@ A modern Morse code translator written in Julia with a beautiful dark-themed GUI
 - **Real-time Sync**: Changes in either field automatically update the other
 - **Audio Playback**: Play Morse code as audio beeps
 - **Modern Dark Theme**: Beautiful, eye-friendly interface
-- **SOLID Architecture**: Clean, maintainable code following SOLID principles
 
 ## Architecture
 
